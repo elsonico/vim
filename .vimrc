@@ -1,3 +1,11 @@
+" Ok, let's disable them.
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
+noremap <PageUp> <NOP>
+noremap <PageDown> <NOP>
+
 " Enter current millenium
 set nocompatible
 
@@ -51,7 +59,7 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-set splitbelow
+"set splitbelow
 set splitright
 
 " Enable folding
@@ -90,16 +98,25 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'Shougo/vimshell.vim'
 Plugin 'Shougo/vimproc.vim'
+
 " Are the colors now nicer?
 Plugin 'jnurmine/Zenburn'
 Plugin 'altercation/vim-colors-solarized'
+
 if has('gui_running')
   set background=dark
-  colorscheme solarized
+"  colorscheme solarized
+  colorscheme darkblue
 else
   colorscheme zenburn
 endif
 call togglebg#map("<F6>")
+
+" Fon for gvim
+set gfn=Monospace\ 14
+set bg=dark
+set guioptions -=m
+set guioptions -=T 
 
 
 highlight BadWhitespace ctermbg=red guibg=darkred
@@ -116,7 +133,7 @@ let g:airline_powerline_fonts = 1
 "endif
 
 if !exists('g:airline_symbols')
-	  let g:airline_symbols = {}
+	let g:airline_symbols = {}
   endif
   let g:airline_symbols.space = "\ua0"
 
