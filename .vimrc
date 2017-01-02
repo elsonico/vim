@@ -1,3 +1,6 @@
+" Enter current millenium
+set nocompatible
+
 " Ok, let's disable them.
 noremap <Up> <NOP>
 noremap <Down> <NOP>
@@ -6,10 +9,6 @@ noremap <Right> <NOP>
 noremap <PageUp> <NOP>
 noremap <PageDown> <NOP>
 
-" Enter current millenium
-set nocompatible
-
-"
 " Enable syntax and plugins.
 syntax enable
 filetype plugin on
@@ -25,13 +24,15 @@ set wildmenu
 command! MakeTags !ctags -R .
 
 " Tweaks for browsing
-let g:netrw_banner=0
-let g:netrw_browse_split=4
-let g:netrw_altv=1
-let g:netrw_liststyle=3
-let g:netrw_list_hide=netrw_gitignore#Hide()
-let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
-set clipboard=unnamed
+" <begin> Lets disable these for a while.
+"let g:netrw_banner=0
+"let g:netrw_browse_split=4
+"let g:netrw_altv=1
+"let g:netrw_liststyle=3
+"let g:netrw_list_hide=netrw_gitignore#Hide()
+"let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
+" <begin> Lets disable these for a while.
+"set clipboard=unnamed
 :set laststatus=2
 "set nocompatible              " required
 filetype off                  " required
@@ -73,7 +74,8 @@ nnoremap <space> za
 set cursorline
 
 au BufNewFile,BufRead *.py setl tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79 expandtab autoindent fileformat=unix nu
-au BufNewFile,BufRead *.java setl tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79 expandtab autoindent fileformat=unix nu
+au BufNewFile,BufRead *.java, *.rb setl tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79 expandtab autoindent fileformat=unix nu
+au BufNewFile,BufRead *.rb setl tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79 expandtab autoindent fileformat=unix nu
 au BufNewFile,BufRead *.js, *.html, *.css setl tabstop=2 softtabstop=2 shiftwidth=2 
 
 Plugin 'gmarik/Vundle.vim'
@@ -95,7 +97,7 @@ Plugin 'tpope/vim-rhubarb'
 let g:github_enterprise_urls = ['https://stash.loyalty.com']
 "Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'scrooloose/nerdtree'
-Plugin 'jistr/vim-nerdtree-tabs'
+"Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'Shougo/vimshell.vim'
 Plugin 'Shougo/vimproc.vim'
 
@@ -112,11 +114,13 @@ else
 endif
 call togglebg#map("<F6>")
 
-" Fon for gvim
-set gfn=Monospace\ 14
-set bg=dark
-set guioptions -=m
-set guioptions -=T 
+if has('gui_running')
+  " Fon for gvim
+  set gfn=Monospace\ 14
+  set bg=dark
+  set guioptions -=m
+  set guioptions -=T 
+endif
 
 
 highlight BadWhitespace ctermbg=red guibg=darkred
@@ -161,3 +165,5 @@ let g:airline_right_alt_sep = ''
 let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
+
+let g:NERDTreeHijackNetrw=0
